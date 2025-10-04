@@ -34,7 +34,7 @@ const Page = () => {
             }
         }
         fetchBooks()
-    }, [])
+    }, [favorites])
 
     const session = useAuth();
     if(session.isSignedIn === false){

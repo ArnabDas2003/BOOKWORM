@@ -1,5 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import { NextResponse } from "next/server";
+import Stripe from 'stripe';
+
+// Initialize Stripe with error handling
+const getStripe = () => {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(key, {
+    apiVersion: '2023-10-16',
+  });
+};
 
 export async function POST(request) {
   try {

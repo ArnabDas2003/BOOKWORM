@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import styles from './page.module.css'
+import Image from 'next/image'
 
 export default function BookCard({
 title,
@@ -9,7 +10,14 @@ onClick,
 }) {
 return (
     <div style={cardStyle} onClick={onClick}>
-    <img src={coverImage} alt={title} style={imageStyle} />
+    <Image
+      src={coverImage}
+      alt={title}
+      width={200}
+      height={300}
+      style={imageStyle}
+      priority={false}
+    />
     <div style={contentStyle}>
         <h3 style={titleStyle}>{title}</h3>
         <p style={descriptionStyle} className=' line-clamp-6 '>{description}</p>
